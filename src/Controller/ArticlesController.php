@@ -4,15 +4,18 @@ namespace App\Controller;
 
 class ArticlesController extends AppController
 {
-    public $autoRender = false;
+    public function initialize() : void
+    {
+        parent::initialize();
+        $this->viewBuilder()->setLayout('test');
+    }
 
     public function index()
     {
-        echo 'Articles Index!';
     }
 
     public function view($id = null)
     {
-        echo 'ID: ' . $id . ' Articles View!';
+        $this->set(compact('id'));
     }
 }
