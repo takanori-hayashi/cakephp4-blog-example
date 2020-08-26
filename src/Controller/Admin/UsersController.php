@@ -122,4 +122,13 @@ class UsersController extends AdminController
             $this->Flash->error('ユーザー名またはパスワードが正しくありません');
         }
     }
+
+    public function logout()
+    {
+        $result = $this->Authentication->getResult();
+        if ($result->isValid()) {
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
+    }
 }
