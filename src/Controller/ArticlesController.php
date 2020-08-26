@@ -6,7 +6,8 @@ class ArticlesController extends AppController
 {
     public function index()
     {
-        $articles = $this->Articles->find('all');
+        $articles = $this->Articles
+                         ->find();
         $this->set(compact('articles'));
     }
 
