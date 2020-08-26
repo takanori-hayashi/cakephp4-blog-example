@@ -59,6 +59,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     Router::prefix('admin', function($routes) {
+        $routes->connect('/', ['controller' => 'Articles', 'action' => 'index']);
         $routes->fallbacks('DashedRoute');
     });
     /*
