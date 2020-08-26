@@ -36,7 +36,31 @@ class ArticlesSeed extends AbstractSeed
                 'published' => 1,
                 'created' => '2020-08-21 12:00:00',
                 'modified' => '2020-08-21 12:00:00',
-            ]
+            ],
+            [
+                'title' => 'テスト投稿',
+                'description' => 'テスト投稿の概要',
+                'body' => 'テスト投稿の本文',
+                'published' => 0,
+                'created' => '2020-08-23 12:00:00',
+                'modified' => '2020-08-23 12:00:00',
+            ],
+            [
+                'title' => 'Hello World!',
+                'description' => 'こんにちは世界',
+                'body' => 'こんにちは世界！本文です。',
+                'published' => 0,
+                'created' => '2020-08-23 08:00:00',
+                'modified' => '2020-08-23 08:00:00',
+            ],
+            [
+                'title' => 'ブログをはじめました',
+                'description' => 'ブログをはじめました概要です',
+                'body' => 'ブログをはじめました本文です。',
+                'published' => 0,
+                'created' => '2020-08-20 20:00:00',
+                'modified' => '2020-08-20 20:00:00',
+            ],
         ];
 
         $table = $this->table('articles');
