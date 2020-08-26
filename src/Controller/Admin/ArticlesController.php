@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminController;
 
 /**
  * Articles Controller
@@ -11,7 +11,7 @@ use App\Controller\AppController;
  * @property \App\Model\Table\ArticlesTable $Articles
  * @method \App\Model\Entity\Article[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class ArticlesController extends AppController
+class ArticlesController extends AdminController
 {
     /**
      * Index method
