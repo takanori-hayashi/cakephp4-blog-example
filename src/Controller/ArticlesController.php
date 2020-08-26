@@ -4,10 +4,14 @@ namespace App\Controller;
 
 class ArticlesController extends AppController
 {
+    public $paginate = [
+        'limit' => 2,
+        'order' => ['created' => 'desc',]
+    ];
+
     public function index()
     {
-        $articles = $this->Articles
-                         ->find();
+        $articles = $this->paginate($this->Articles->find());
         $this->set(compact('articles'));
     }
 
