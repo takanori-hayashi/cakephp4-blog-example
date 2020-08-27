@@ -40,6 +40,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <a href="/admin/articles">投稿</a>
             <a href="/admin/users">ユーザー</a>
+            <a href="/admin/tags">タグ</a>
             <?php if ($this->Identity->isLoggedIn()) : ?>
             <a href="/admin/users/logout">ログアウト</a>
             <?php endif;?>

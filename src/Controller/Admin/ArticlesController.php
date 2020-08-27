@@ -23,6 +23,7 @@ class ArticlesController extends AdminController
     {
         parent::initialize();
         $this->loadModel('Users');
+        $this->loadModel('Tags');
     }
 
     /**
@@ -71,7 +72,8 @@ class ArticlesController extends AdminController
             $this->Flash->error(__('The article could not be saved. Please, try again.'));
         }
         $users = $this->Users->find('list');
-        $this->set(compact(['article', 'users']));
+        $tags = $this->Tags->find('list');
+        $this->set(compact('article', 'users', 'tags'));
     }
 
     /**
@@ -84,7 +86,7 @@ class ArticlesController extends AdminController
     public function edit($id = null)
     {
         $article = $this->Articles->get($id, [
-            'contain' => [],
+            'contain' => ['Tags'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $article = $this->Articles->patchEntity($article, $this->request->getData());
@@ -95,8 +97,10 @@ class ArticlesController extends AdminController
             }
             $this->Flash->error(__('The article could not be saved. Please, try again.'));
         }
+        
         $users = $this->Users->find('list');
-        $this->set(compact(['article', 'users']));
+        $tags = $this->Tags->find('list');
+        $this->set(compact('article', 'users', 'tags'));
     }
 
     /**
