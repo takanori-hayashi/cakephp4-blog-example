@@ -1,10 +1,13 @@
 <?php
 /**
  * @var App\View\AppView $this
- * @var App\Model\Entity\Article[] $articles
+ * @var App\Model\Entity\Tag $tag
  */
 ?>
 <div class="content">
+    <p><?= $tag->created->i18nFormat('YYYY年MM月dd日 HH:mm') ?></p>
+    <h1>#<?= h($tag->title) ?> 投稿一覧</h1>
+
     <?php foreach ($articles as $article) : ?>
         <h3><?= h($article->title) ?></h3>
         <p><?= $article->created->i18nFormat('YYYY年MM月dd日 HH:mm') ?></p>
@@ -14,11 +17,7 @@
                 <?php if (!empty($article->tags)) : ?>
                     <?php foreach ($article->tags as $tag) : ?>
                         <?= $this->Html->link($tag->title,
-                            [
-                                'controller' => 'tags',
-                                'action' => 'view',
-                                $tag->id,
-                            ]) ?>
+                            ['action' => 'view', $tag->id,]) ?>
                         <?= $tag !== end($article->tags) ? ',' : '' ?>
                     <?php endforeach; ?> / 
                 <?php endif; ?>
@@ -35,15 +34,5 @@
         <hr>
     <?php endforeach; ?>
 
-    <?php if ($this->Paginator->total() > 1) : ?>
-        <div class="paginator">
-            <ul class="pagination">
-                <?= $this->Paginator->first('最初') ?>
-                <?= $this->Paginator->prev('← 前へ') ?>
-                <?= $this->Paginator->numbers() ?>
-                <?= $this->Paginator->next('次へ →') ?>
-                <?= $this->Paginator->last('最後') ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+    <?= $this->Html->link('一覧', ['action' => 'index'], ['class' => 'button']) ?>
 </div>
