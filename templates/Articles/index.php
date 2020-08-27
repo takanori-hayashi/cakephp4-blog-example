@@ -9,6 +9,7 @@
         <h3><?= h($article->title) ?></h3>
         <p><?= $article->created->i18nFormat('YYYY年MM月dd日 HH:mm') ?></p>
         <?= $this->Text->autoParagraph(h($article->description)) ?>
+        <p><small>投稿者：<?= h($article->user->username) ?></small></p>
         <?= $this->Html->link('記事を見る', [
             'action' => 'view',
             $article->id,

@@ -6,7 +6,8 @@ class ArticlesController extends AppController
 {
     public $paginate = [
         'limit' => 10,
-        'order' => ['created' => 'desc',]
+        'order' => ['created' => 'desc',],
+        'contain' => 'Users',
     ];
 
     public function index()
@@ -17,7 +18,7 @@ class ArticlesController extends AppController
 
     public function view($id = null)
     {
-        $article = $this->Articles->get($id);
+        $article = $this->Articles->get($id, ['contain' => 'Users']);
         $this->set(compact('article'));
     }
 }

@@ -13,6 +13,7 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('title') ?></th>
+                    <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th><?= $this->Paginator->sort('published') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -24,6 +25,7 @@
                 <tr>
                     <td><?= $this->Number->format($article->id) ?></td>
                     <td><?= h($article->title) ?></td>
+                    <td><?= h($article->user->username) ?></td>
                     <td><?= h($article->published) ?></td>
                     <td><?= h($article->created) ?></td>
                     <td><?= h($article->modified) ?></td>

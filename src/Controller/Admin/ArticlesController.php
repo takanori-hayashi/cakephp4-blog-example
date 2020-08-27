@@ -13,6 +13,18 @@ use App\Controller\Admin\AdminController;
  */
 class ArticlesController extends AdminController
 {
+    public $paginate = [
+        'limit' => 20,
+        'order' => ['created' => 'desc',],
+        'contain' => 'Users',
+    ];
+
+    public function initialize() : void
+    {
+        parent::initialize();
+        $this->loadModel('Users');
+    }
+
     /**
      * Index method
      *
@@ -35,7 +47,7 @@ class ArticlesController extends AdminController
     public function view($id = null)
     {
         $article = $this->Articles->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
 
         $this->set(compact('article'));
@@ -58,7 +70,8 @@ class ArticlesController extends AdminController
             }
             $this->Flash->error(__('The article could not be saved. Please, try again.'));
         }
-        $this->set(compact('article'));
+        $users = $this->Users->find('list');
+        $this->set(compact(['article', 'users']));
     }
 
     /**
@@ -82,7 +95,8 @@ class ArticlesController extends AdminController
             }
             $this->Flash->error(__('The article could not be saved. Please, try again.'));
         }
-        $this->set(compact('article'));
+        $users = $this->Users->find('list');
+        $this->set(compact(['article', 'users']));
     }
 
     /**

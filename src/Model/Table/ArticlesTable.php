@@ -44,6 +44,8 @@ class ArticlesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Users');
     }
 
     /**
@@ -77,6 +79,10 @@ class ArticlesTable extends Table
         $validator
             ->boolean('published')
             ->notEmptyString('published');
+        
+        $validator
+            ->integer('user_id')
+            ->notEmptyString('user_id');
 
         return $validator;
     }
